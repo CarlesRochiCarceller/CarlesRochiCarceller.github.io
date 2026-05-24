@@ -1,10 +1,245 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Personal Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name | Personal Page</title>
+  <style>
+    :root {
+      --bg: #f7f7f8;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --card: #ffffff;
+      --accent: #2563eb;
+      --accent-dark: #1d4ed8;
+      --border: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .site-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 3rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      max-width: 700px;
+    }
+
+    .button-row {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 0.75rem 1rem;
+      background: var(--accent);
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .button:hover {
+      background: var(--accent-dark);
+    }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+
+    .button.secondary:hover {
+      background: #eff6ff;
+    }
+
+    section {
+      margin-top: 3rem;
+    }
+
+    section h2 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+    }
+
+    .card h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    footer {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 650px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .hero {
+        padding: 2rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello, I’m Your Name</h1>
-  <p>Welcome to my personal website.</p>
+  <header>
+    <nav>
+      <a class="site-title" href="index.html">Your Name</a>
+      <ul class="nav-links">
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Hello, I’m Your Name.</h1>
+      <p>
+        I am a researcher, student, developer, or professional working on topics
+        related to your field. This website collects my academic and professional
+        information, including my CV, publications, and recent news.
+      </p>
+      <p>
+        Use the links above to learn more about my background, research output,
+        and latest updates.
+      </p>
+
+      <div class="button-row">
+        <a class="button" href="cv.html">View CV</a>
+        <a class="button secondary" href="publications.html">See Publications</a>
+        <a class="button secondary" href="news.html">Latest News</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>About this site</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>CV</h3>
+          <p>Education, work experience, skills, awards, and contact information.</p>
+        </div>
+
+        <div class="card">
+          <h3>Publications</h3>
+          <p>Journal articles, conference papers, preprints, and other research outputs.</p>
+        </div>
+
+        <div class="card">
+          <h3>News</h3>
+          <p>Recent updates, talks, projects, announcements, and milestones.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Your Name. Hosted with GitHub Pages.</p>
+  </footer>
 </body>
 </html>
