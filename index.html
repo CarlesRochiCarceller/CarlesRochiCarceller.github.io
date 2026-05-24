@@ -45,11 +45,33 @@
       align-items: center;
     }
 
-    .site-title {
-      font-size: 1.2rem;
-      font-weight: 700;
+    .social-links {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .social-links a {
       color: var(--text);
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--accent);
+      background: #eff6ff;
+    }
+
+    .social-links svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
     }
 
     .nav-links {
@@ -188,7 +210,32 @@
 <body>
   <header>
     <nav>
-      <a class="site-title" href="index.html">Your Name</a>
+      <div class="social-links" aria-label="Social links">
+        <a href="https://scholar.google.com/citations?user=YOUR_GOOGLE_SCHOLAR_ID" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14Zm0-24L0 9.5l4.84 3.82A8.98 8.98 0 0 1 12 9a8.98 8.98 0 0 1 7.16 4.32L24 9.5 12 0Z"/>
+          </svg>
+        </a>
+
+        <a href="https://www.linkedin.com/in/YOUR_LINKEDIN_USERNAME/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.02H3.54V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z"/>
+          </svg>
+        </a>
+
+        <a href="mailto:your.email@example.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm10 9.2L2.4 6.8V18h19.2V6.8L12 13.2Zm0-2.4L21.2 6H2.8L12 10.8Z"/>
+          </svg>
+        </a>
+
+        <a href="https://github.com/YOUR_GITHUB_USERNAME" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 .3A12 12 0 0 0 8.2 23.7c.6.1.82-.26.82-.58v-2.02c-3.34.73-4.04-1.6-4.04-1.6-.55-1.38-1.34-1.75-1.34-1.75-1.09-.75.08-.74.08-.74 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.48.99.11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 5.64c1.02.01 2.05.14 3.01.41 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .3Z"/>
+          </svg>
+        </a>
+      </div>
+
       <ul class="nav-links">
         <li><a href="cv.html">CV</a></li>
         <li><a href="publications.html">Publications</a></li>
