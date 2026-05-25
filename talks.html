@@ -17,6 +17,8 @@
       --accent-soft: #dbeafe;
       --border: #bfdbfe;
       --title: #0f3d75;
+      --youtube: #ff0000;
+      --youtube-soft: #ffe5e5;
     }
 
     * {
@@ -171,15 +173,48 @@
       margin-bottom: 0.35rem;
     }
 
+    .talk-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 0.5rem;
+    }
+
     .talk-type {
       display: inline-block;
-      margin-top: 0.5rem;
       background: var(--accent-soft);
       color: var(--title);
       border: 1px solid var(--border);
       padding: 0.25rem 0.55rem;
       font-weight: 700;
       font-size: 0.9rem;
+    }
+
+    .youtube-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--youtube);
+      background: var(--youtube-soft);
+      border: 1px solid rgba(255, 0, 0, 0.2);
+      padding: 0.25rem 0.55rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .youtube-link:hover {
+      background: #ffd6d6;
+      transform: translateY(-1px);
+    }
+
+    .youtube-link svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      flex-shrink: 0;
     }
 
     footer {
@@ -284,7 +319,9 @@
             <span class="date">2021</span>
           </div>
           <p>ICE 6 (Quantum Information in Spain), Online.</p>
-          <span class="talk-type">Poster presentation</span>
+          <div class="talk-links">
+            <span class="talk-type">Poster presentation</span>
+          </div>
         </article>
 
         <article class="talk">
@@ -293,7 +330,9 @@
             <span class="date">2021</span>
           </div>
           <p>Cargese School of Quantum Information and Quantum Technology, Sorbonne University, Italy.</p>
-          <span class="talk-type">Poster presentation</span>
+          <div class="talk-links">
+            <span class="talk-type">Poster presentation</span>
+          </div>
         </article>
 
         <article class="talk">
@@ -302,7 +341,9 @@
             <span class="date">2021</span>
           </div>
           <p>NONGAUSS winter school, DTU, Denmark.</p>
-          <span class="talk-type">Talk</span>
+          <div class="talk-links">
+            <span class="talk-type">Talk</span>
+          </div>
         </article>
 
         <article class="talk">
@@ -311,7 +352,9 @@
             <span class="date">2021</span>
           </div>
           <p>Joint seminar DTU-ICFO on Quantum Information, ICFO, Spain.</p>
-          <span class="talk-type">Talk</span>
+          <div class="talk-links">
+            <span class="talk-type">Talk</span>
+          </div>
         </article>
 
         <article class="talk">
@@ -320,7 +363,9 @@
             <span class="date">2022</span>
           </div>
           <p>Quantum information seminar, KAIST, South Korea.</p>
-          <span class="talk-type">Talk</span>
+          <div class="talk-links">
+            <span class="talk-type">Talk</span>
+          </div>
         </article>
 
         <article class="talk">
@@ -329,7 +374,9 @@
             <span class="date">2022</span>
           </div>
           <p>Workshop on Continuous-Variable Quantum Correlations, DTU, Denmark.</p>
-          <span class="talk-type">Poster presentation</span>
+          <div class="talk-links">
+            <span class="talk-type">Poster presentation</span>
+          </div>
         </article>
 
         <article class="talk">
@@ -338,7 +385,9 @@
             <span class="date">2024</span>
           </div>
           <p>Quantum Redemptions, Mehedeleby, Sweden.</p>
-          <span class="talk-type">Talk</span>
+          <div class="talk-links">
+            <span class="talk-type">Talk</span>
+          </div>
         </article>
 
         <article class="talk">
@@ -347,7 +396,9 @@
             <span class="date">2024</span>
           </div>
           <p>ICE 9 (Quantum Information in Spain), Tenerife, Spain.</p>
-          <span class="talk-type">Talk</span>
+          <div class="talk-links">
+            <span class="talk-type">Talk</span>
+          </div>
         </article>
 
         <article class="talk">
@@ -356,7 +407,9 @@
             <span class="date">2024</span>
           </div>
           <p>JQUEST: JYU Quantum Electronics, Superconductivity, and Topology workshop, Jyväskylä, Finland.</p>
-          <span class="talk-type">Talk</span>
+          <div class="talk-links">
+            <span class="talk-type">Talk</span>
+          </div>
         </article>
 
         <article class="talk">
@@ -365,7 +418,9 @@
             <span class="date">2024</span>
           </div>
           <p>Faculty of Information Technology group meeting, Jyväskylä, Finland.</p>
-          <span class="talk-type">Talk</span>
+          <div class="talk-links">
+            <span class="talk-type">Talk</span>
+          </div>
         </article>
 
         <article class="talk">
@@ -374,7 +429,9 @@
             <span class="date">2025</span>
           </div>
           <p>University of Edinburgh, Quantum Software Lab (QSL) seminar. Online.</p>
-          <span class="talk-type">Talk</span>
+          <div class="talk-links">
+            <span class="talk-type">Talk</span>
+          </div>
         </article>
 
         <article class="talk">
@@ -383,7 +440,9 @@
             <span class="date">2025</span>
           </div>
           <p>Quantum Certification Conference (QUACC), Warsaw, Poland.</p>
-          <span class="talk-type">Talk</span>
+          <div class="talk-links">
+            <span class="talk-type">Talk</span>
+          </div>
         </article>
 
         <article class="talk">
@@ -392,7 +451,9 @@
             <span class="date">2025</span>
           </div>
           <p>KAIST Seminar, Daejeon, South Korea.</p>
-          <span class="talk-type">Talk</span>
+          <div class="talk-links">
+            <span class="talk-type">Talk</span>
+          </div>
         </article>
 
         <article class="talk">
@@ -401,7 +462,12 @@
             <span class="date">2026</span>
           </div>
           <p>Quantum at the Dunes, Natal, Brazil.</p>
-          <span class="talk-type">Talk</span>
+          <div class="talk-links">
+            <span class="talk-type">Talk</span>
+            <a class="youtube-link" href="https://www.youtube.com/watch?v=fxJz_cInHDw" target="_blank" rel="noopener noreferrer" aria-label="Watch this talk on YouTube">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12l-6.2 3.6Z"/></svg>
+            </a>
+          </div>
         </article>
 
         <article class="talk">
@@ -410,7 +476,12 @@
             <span class="date">2026</span>
           </div>
           <p>International Institute of Physics Seminar, Natal, Brazil.</p>
-          <span class="talk-type">Talk</span>
+          <div class="talk-links">
+            <span class="talk-type">Talk</span>
+            <a class="youtube-link" href="https://www.youtube.com/watch?v=UNz3k-5oNxw" target="_blank" rel="noopener noreferrer" aria-label="Watch this talk on YouTube">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12l-6.2 3.6Z"/></svg>
+            </a>
+          </div>
         </article>
 
         <article class="talk">
@@ -419,7 +490,9 @@
             <span class="date">2026</span>
           </div>
           <p>WE-Heraeus-Seminar: 90 Years of EPR Paradox: Foundations and Applications, Bad Honnef, Germany.</p>
-          <span class="talk-type">Poster presentation</span>
+          <div class="talk-links">
+            <span class="talk-type">Poster presentation</span>
+          </div>
         </article>
       </div>
     </section>
