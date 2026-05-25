@@ -6,13 +6,17 @@
   <title>Carles Roch i Carceller</title>
   <style>
     :root {
-      --bg: #5C5CFF;
-      --text: #fffff;
-      --muted: #323259;
-      --card: #F2F2FC;
+      --bg: #eef5ff;
+      --bg-gradient-start: #eaf3ff;
+      --bg-gradient-end: #dbeafe;
+      --text: #102a43;
+      --muted: #526d82;
+      --card: #ffffff;
       --accent: #2563eb;
-      --accent-dark: #1d4ed8;
-      --border: #E8E8FF;
+      --accent-dark: #1e40af;
+      --accent-soft: #dbeafe;
+      --border: #bfdbfe;
+      --title: #0f3d75;
     }
 
     * {
@@ -22,18 +26,19 @@
     }
 
     body {
-      font-family: Calirbi, Helvetica, sans-serif;
+      font-family: Calibri, "Segoe UI", Arial, Helvetica, sans-serif;
       line-height: 1.6;
-      background: var(--bg);
+      background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
       color: var(--text);
     }
 
     header {
-      background: var(--card);
+      background: rgba(255, 255, 255, 0.92);
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 10;
+      backdrop-filter: blur(10px);
     }
 
     nav {
@@ -52,7 +57,7 @@
     }
 
     .social-links a {
-      color: var(--text);
+      color: var(--title);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
@@ -65,7 +70,7 @@
 
     .social-links a:hover {
       color: var(--accent);
-      background: #eff6ff;
+      background: var(--accent-soft);
     }
 
     .social-links svg {
@@ -82,8 +87,8 @@
 
     .nav-links a {
       text-decoration: none;
-      color: #3030FF;
-      font-weight: 500;
+      color: var(--title);
+      font-weight: 600;
     }
 
     .nav-links a:hover,
@@ -94,30 +99,38 @@
     main {
       max-width: 1000px;
       margin: 0 auto;
-      padding: 1rem 2rem;
+      padding: 2.5rem 2rem 1rem 2rem;
     }
 
     .page-intro {
       text-align: center;
       max-width: 720px;
       margin: 0 auto 4rem auto;
+      position: sticky;
+      top: 5.5rem;
+      z-index: 1;
+      pointer-events: none;
     }
 
     .page-intro h1 {
+      font-family: Calibri, "Segoe UI", Arial, Helvetica, sans-serif;
       font-size: 4.6rem;
-      margin-bottom: 0rem;
-      color: #ffffff;
+      margin-bottom: 0.25rem;
+      color: var(--title);
+      letter-spacing: -0.04em;
     }
 
     .page-intro p {
       font-size: 1.1rem;
-      color: #ffffff;
+      color: var(--muted);
     }
 
     .news-list {
       display: flex;
       flex-direction: column;
       gap: 0rem;
+      position: relative;
+      z-index: 2;
     }
 
     .news-item {
@@ -129,12 +142,15 @@
       border: 0px solid var(--border);
       border-radius: 0px;
       padding: 3rem;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.0);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0);
+      position: relative;
+      z-index: 3;
     }
 
     .news-text h2 {
       font-size: 1.6rem;
       margin-bottom: 1rem;
+      color: var(--title);
     }
 
     .news-text p {
@@ -156,7 +172,7 @@
       object-fit: cover;
       border-radius: 14px;
       border: 1px solid var(--border);
-      background: #eef2ff;
+      background: var(--accent-soft);
     }
 
     .read-more {
@@ -204,6 +220,11 @@
 
       .news-item.image-left .news-text {
         order: 1;
+      }
+
+      .page-intro {
+        position: static;
+        pointer-events: auto;
       }
 
       .page-intro h1 {
