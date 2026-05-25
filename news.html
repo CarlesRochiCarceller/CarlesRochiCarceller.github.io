@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carles Roch i Carceller</title>
+  <title>News | Carles Roch i Carceller</title>
   <style>
     :root {
       --bg: #eef5ff;
@@ -104,12 +104,8 @@
 
     .page-intro {
       text-align: center;
-      max-width: 720px;
+      max-width: 760px;
       margin: 0 auto 4rem auto;
-      position: sticky;
-      top: 5.5rem;
-      z-index: 1;
-      pointer-events: none;
     }
 
     .page-intro h1 {
@@ -128,9 +124,7 @@
     .news-list {
       display: flex;
       flex-direction: column;
-      gap: 0rem;
-      position: relative;
-      z-index: 2;
+      gap: 1.5rem;
     }
 
     .news-item {
@@ -139,12 +133,10 @@
       gap: 2.5rem;
       align-items: center;
       background: var(--card);
-      border: 0px solid var(--border);
+      border: 1px solid var(--border);
       border-radius: 0px;
       padding: 3rem;
-      box-shadow: 0 14px 35px rgba(0, 0, 0, 0);
-      position: relative;
-      z-index: 3;
+      box-shadow: 0 14px 35px rgba(37, 99, 235, 0.08);
     }
 
     .news-text h2 {
@@ -170,9 +162,10 @@
       width: 100%;
       height: 280px;
       object-fit: cover;
-      border-radius: 14px;
+      border-radius: 0px;
       border: 1px solid var(--border);
       background: var(--accent-soft);
+      box-shadow: 0 14px 35px rgba(37, 99, 235, 0.10);
     }
 
     .read-more {
@@ -206,8 +199,17 @@
         justify-content: center;
       }
 
+      main {
+        padding: 2rem 1.25rem 1rem 1.25rem;
+      }
+
+      .page-intro h1 {
+        font-size: 2.4rem;
+      }
+
       .news-item {
         grid-template-columns: 1fr;
+        padding: 1.25rem;
       }
 
       .news-text.right {
@@ -220,15 +222,6 @@
 
       .news-item.image-left .news-text {
         order: 1;
-      }
-
-      .page-intro {
-        position: static;
-        pointer-events: auto;
-      }
-
-      .page-intro h1 {
-        font-size: 2.1rem;
       }
     }
   </style>
