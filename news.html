@@ -128,10 +128,6 @@
     }
 
     .news-item {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
-      align-items: center;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 0px;
@@ -139,10 +135,18 @@
       box-shadow: 0 14px 35px rgba(37, 99, 235, 0.08);
     }
 
-    .news-text h2 {
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
+    .news-title {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
       color: var(--title);
+    }
+
+    .news-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
     }
 
     .news-text p {
@@ -208,8 +212,16 @@
       }
 
       .news-item {
-        grid-template-columns: 1fr;
         padding: 1.25rem;
+      }
+
+      .news-content {
+        grid-template-columns: 1fr;
+      }
+
+      .news-title {
+        font-size: 1.45rem;
+        margin-bottom: 1.25rem;
       }
 
       .news-text.right {
@@ -275,8 +287,10 @@
 
     <section class="news-list">
       <article class="news-item image-right">
-        <div class="news-text left">
-          <h2>Bound entanglement can boost communication</h2>
+        <h2 class="news-title">Title 1</h2>
+
+        <div class="news-content">
+          <div class="news-text left">
           <p>
             When two objects interact, some of their physical properties can become correlated, establishing an invisible connection between them. If one of these properties is measured in one object, the corresponding property in the other becomes instantaneously affected, even if they are at opposite ends of the universe. This mysterious connection, commonly known as entanglement, is a fascinating phenomenon discovered over a century ago and still defying our notions of reality. Entanglement is also an extremely useful resource in quantum information, and can appear in various forms. Certain statesknown as “bound entangled states”exhibit a form of entanglement which is restricted, i.e., cannot be strengthened operating individually in both objects. Bound entangled states have for long been deemed useless in communication tasks. Here we show that this is no longer true, proving a significant communication advantage when bound entangled states are employed. 
           </p>
@@ -289,15 +303,18 @@
         <div class="news-image">
           <img src="images/bound_entanglement.png" alt="Illustrative image for work one" />
         </div>
+        </div>
       </article>
 
       <article class="news-item image-left">
-        <div class="news-image">
+        <h2 class="news-title">Title 2</h2>
+
+        <div class="news-content">
+          <div class="news-image">
           <img src="images/work-two.jpg" alt="Illustrative image for work two" />
         </div>
 
         <div class="news-text right">
-          <h2>Title 2</h2>
           <p>
             lorem ipsum
           </p>
@@ -306,11 +323,14 @@
           </p>
           <a class="read-more" href="publications.html">Related publication</a>
         </div>
+        </div>
       </article>
 
       <article class="news-item image-right">
-        <div class="news-text left">
-          <h2>Title 3</h2>
+        <h2 class="news-title">Title 3</h2>
+
+        <div class="news-content">
+          <div class="news-text left">
           <p>
             lorem ipsum
           </p>
@@ -324,15 +344,18 @@
         <div class="news-image">
           <img src="images/work-three.jpg" alt="Illustrative image for work three" />
         </div>
+        </div>
       </article>
 
       <article class="news-item image-left">
-        <div class="news-image">
+        <h2 class="news-title">Title 4</h2>
+
+        <div class="news-content">
+          <div class="news-image">
           <img src="images/work-four.jpg" alt="Illustrative image for work four" />
         </div>
 
         <div class="news-text right">
-          <h2>Title 4</h2>
           <p>
             lorem ipsum
           </p>
@@ -340,6 +363,7 @@
             lorem ipsum
           </p>
           <a class="read-more" href="publications.html">Related publication</a>
+        </div>
         </div>
       </article>
     </section>
