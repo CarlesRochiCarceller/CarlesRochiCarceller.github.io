@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV | Carles Roch i Carceller</title>
+  <style>
+    :root {
+      --bg: #eef5ff;
+      --bg-gradient-start: #eaf3ff;
+      --bg-gradient-end: #dbeafe;
+      --text: #102a43;
+      --muted: #526d82;
+      --card: #ffffff;
+      --accent: #2563eb;
+      --accent-dark: #1e40af;
+      --accent-soft: #dbeafe;
+      --border: #bfdbfe;
+      --title: #0f3d75;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Calibri, "Segoe UI", Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+      color: var(--text);
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+
+    nav {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .social-links {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .social-links a {
+      color: var(--title);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .social-links svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--title);
+      font-weight: 600;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent);
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem 1rem 2rem;
+    }
+
+    .page-intro {
+      text-align: center;
+      max-width: 820px;
+      margin: 0 auto 4rem auto;
+    }
+
+    .page-intro h1 {
+      font-family: Calibri, "Segoe UI", Arial, Helvetica, sans-serif;
+      font-size: 4.6rem;
+      margin-bottom: 0.25rem;
+      color: var(--title);
+      letter-spacing: -0.04em;
+    }
+
+    .page-intro p {
+      font-size: 1.1rem;
+      color: var(--muted);
+    }
+
+    .summary-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 0px;
+      padding: 2rem;
+      box-shadow: 0 14px 35px rgba(37, 99, 235, 0.08);
+      margin-bottom: 2rem;
+    }
+
+    .summary-card h2 {
+      color: var(--title);
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .summary-item {
+      border-left: 3px solid var(--accent);
+      padding-left: 1rem;
+    }
+
+    .summary-label {
+      color: var(--title);
+      font-weight: 700;
+    }
+
+    .summary-item a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .summary-item a:hover {
+      color: var(--accent-dark);
+      text-decoration: underline;
+    }
+
+    .cv-section {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      color: var(--title);
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.75rem;
+    }
+
+    .cv-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .cv-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 0px;
+      padding: 1.5rem 1.75rem;
+      box-shadow: 0 14px 35px rgba(37, 99, 235, 0.08);
+    }
+
+    .cv-item-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: baseline;
+      margin-bottom: 0.35rem;
+    }
+
+    .cv-item h3 {
+      color: var(--title);
+      font-size: 1.15rem;
+    }
+
+    .date {
+      color: var(--accent);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .cv-item p {
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .compact-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .tag {
+      background: var(--accent-soft);
+      color: var(--title);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.55rem;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (max-width: 750px) {
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      main {
+        padding: 2rem 1.25rem 1rem 1.25rem;
+      }
+
+      .page-intro h1 {
+        font-size: 2.4rem;
+      }
+
+      .cv-item {
+        padding: 1.25rem;
+      }
+
+      .cv-item-header {
+        flex-direction: column;
+        gap: 0.1rem;
+      }
+
+      .date {
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="social-links" aria-label="Social links">
+        <a href="https://scholar.google.com/citations?user=_GYGsRcAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14Zm0-24L0 9.5l4.84 3.82A8.98 8.98 0 0 1 12 9a8.98 8.98 0 0 1 7.16 4.32L24 9.5 12 0Z"/>
+          </svg>
+        </a>
+
+        <a href="https://se.linkedin.com/in/carlesroch" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.02H3.54V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z"/>
+          </svg>
+        </a>
+
+        <a href="mailto:carles.roch_i_carceller@fysik.lu.se" aria-label="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm10 9.2L2.4 6.8V18h19.2V6.8L12 13.2Zm0-2.4L21.2 6H2.8L12 10.8Z"/>
+          </svg>
+        </a>
+
+        <a href="https://github.com/chalswater" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 .3A12 12 0 0 0 8.2 23.7c.6.1.82-.26.82-.58v-2.02c-3.34.73-4.04-1.6-4.04-1.6-.55-1.38-1.34-1.75-1.34-1.75-1.09-.75.08-.74.08-.74 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.48.99.11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 5.64c1.02.01 2.05.14 3.01.41 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .3Z"/>
+          </svg>
+        </a>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a class="active" href="cv.html">CV</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-intro">
+      <h1>Curriculum Vitae (CV)</h1>
+      <p>
+        A brief summary of my studies, employment and academic tasks.
+      </p>
+    </section>
+
+    <section class="summary-card">
+      <h2>Carles Roch i Carceller</h2>
+      <p>Dr. Carles Roch i Carceller | PhD date: 15 January 2024</p>
+      <p>Quantum Information Theory</p>
+
+      <div class="summary-grid">
+        <div class="summary-item">
+          <p class="summary-label">Current position</p>
+          <p>Postdoctoral researcher at Lund University, Lund, Sweden.</p>
+        </div>
+
+        <div class="summary-item">
+          <p class="summary-label">Email</p>
+          <p><a href="mailto:carles.roch_i_carceller@fysik.lu.se">carles.roch_i_carceller@fysik.lu.se</a></p>
+        </div>
+
+        <div class="summary-item">
+          <p class="summary-label">Personal email</p>
+          <p><a href="mailto:chalswater@gmail.com">chalswater@gmail.com</a></p>
+        </div>
+
+        <div class="summary-item">
+          <p class="summary-label">ORCID</p>
+          <p><a href="https://orcid.org/0000-0002-1563-9451" target="_blank" rel="noopener noreferrer">0000-0002-1563-9451</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="section-title">Education</h2>
+      <div class="cv-list">
+        <article class="cv-item">
+          <div class="cv-item-header">
+            <h3>Bachelor’s degree in Theoretical Physics</h3>
+            <span class="date">2014 - 2018</span>
+          </div>
+          <p>University of Barcelona, Spain.</p>
+        </article>
+
+        <article class="cv-item">
+          <div class="cv-item-header">
+            <h3>Master’s degree in Quantum Physics</h3>
+            <span class="date">2018 - 2020</span>
+          </div>
+          <p>University of Copenhagen, Niels Bohr Institute, Denmark.</p>
+        </article>
+
+        <article class="cv-item">
+          <div class="cv-item-header">
+            <h3>PhD Student</h3>
+            <span class="date">2020 - 2023</span>
+          </div>
+          <p>Technical University of Denmark, Denmark.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="section-title">Academic visits</h2>
+      <div class="cv-list">
+        <article class="cv-item">
+          <div class="cv-item-header">
+            <h3>Korea Advanced Institute of Science and Technology (KAIST)</h3>
+            <span class="date">2022 &amp; 2025</span>
+          </div>
+          <p>South Korea. Group of Prof. Joonwoo Bae. Total duration of 3 + 1/2 months.</p>
+        </article>
+
+        <article class="cv-item">
+          <div class="cv-item-header">
+            <h3>Institut de ciències fotòniques (ICFO)</h3>
+            <span class="date">2022</span>
+          </div>
+          <p>Barcelona, Spain. Group of Prof. Antonio Acín. Duration of 1 month.</p>
+        </article>
+
+        <article class="cv-item">
+          <div class="cv-item-header">
+            <h3>Jyväskylä University</h3>
+            <span class="date">2024</span>
+          </div>
+          <p>Jyväskylä, Finland. Group of Prof. Teiko Heinosaari. Duration of 2 weeks.</p>
+        </article>
+
+        <article class="cv-item">
+          <div class="cv-item-header">
+            <h3>Federal University of Rio Grande do Norte (UFRN)</h3>
+            <span class="date">2026</span>
+          </div>
+          <p>Natal, Brazil. Group of Prof. Rafael Chaves. Duration of 1 month.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="section-title">Past employment</h2>
+      <div class="cv-list">
+        <article class="cv-item">
+          <div class="cv-item-header">
+            <h3>Teacher</h3>
+            <span class="date">2016 - 2017</span>
+          </div>
+          <p>Germans Grans, Barcelona, Spain.</p>
+        </article>
+
+        <article class="cv-item">
+          <div class="cv-item-header">
+            <h3>Research assistant</h3>
+            <span class="date">2017 - 2018</span>
+          </div>
+          <p>Advanced Nanotechnologies, Barcelona, Spain.</p>
+        </article>
+
+        <article class="cv-item">
+          <div class="cv-item-header">
+            <h3>Data entry</h3>
+            <span class="date">2019 - 2020</span>
+          </div>
+          <p>Omnio IoT, Copenhagen, Denmark.</p>
+        </article>
+
+        <article class="cv-item">
+          <div class="cv-item-header">
+            <h3>PhD student</h3>
+            <span class="date">2020 - 2023</span>
+          </div>
+          <p>Technical University of Denmark, Lyngby, Denmark.</p>
+        </article>
+
+        <article class="cv-item">
+          <div class="cv-item-header">
+            <h3>Assistant researcher</h3>
+            <span class="date">2023</span>
+          </div>
+          <p>Technical University of Denmark, Lyngby, Denmark.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cv-section">
+      <h2 class="section-title">Teaching and supervision</h2>
+      <div class="cv-list">
+        <article class="cv-item">
+          <div class="cv-item-header">
+            <h3>Teaching assistant</h3>
+            <span class="date">2021</span>
+          </div>
+          <p>Advanced quantum mechanics, Technical University of Denmark, Lyngby, Denmark.</p>
+        </article>
+
+        <article class="cv-item">
+          <div class="cv-item-header">
+            <h3>Entropy bounds for semi-device-independent randomness certification</h3>
+            <span class="date">2024</span>
+          </div>
+          <p>Nicolò Sguerso, Master Thesis, Technical University of Denmark.</p>
+        </article>
+
+        <article class="cv-item">
+          <div class="cv-item-header">
+            <h3>Quantum key distribution with imperfect devices</h3>
+            <span class="date">2025</span>
+          </div>
+          <p>Astrid Levin, Master Thesis, Lund University.</p>
+        </article>
+
+        <article class="cv-item">
+          <div class="cv-item-header">
+            <h3>Multipartite quantum key distribution</h3>
+            <span class="date">2025</span>
+          </div>
+          <p>Simon Birgersson, Master Thesis, Lund University.</p>
+        </article>
+
+        <article class="cv-item">
+          <div class="cv-item-header">
+            <h3>Certifying the inherent randomness in quantum state discrimination</h3>
+            <span class="date">2025</span>
+          </div>
+          <p>Oliver Karlsson, Bachelor Thesis, Lund University.</p>
+        </article>
+      </div>
+    </section>
+    
+      </main>
+
+  <footer>
+    <p>&copy; 2026 Carles Roch i Carceller. Hosted with GitHub Pages.</p>
+  </footer>
+</body>
+</html>
