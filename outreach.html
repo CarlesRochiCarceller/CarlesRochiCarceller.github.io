@@ -191,6 +191,25 @@
       text-align: center;
     }
 
+    .article-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    
+    .article-badge:hover {
+      background: var(--accent);
+      color: white;
+    }
+    
+    .article-badge svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
     @media (max-width: 750px) {
       nav {
         flex-direction: column;
@@ -277,19 +296,32 @@
       <h2 class="section-title">Outreach activities</h2>
 
       <div class="outreach-list">
-        <article class="outreach-item">
-          <div class="outreach-header">
-            <h3>Quantum mechanics: the solution to information security</h3>
-            <span class="date">2024</span>
-          </div>
-          <p> Qtalk, Lund University, Sweden.</p>
-          <span class="outreach-type">Talk to Master and PhD students</span>
-        </article>
 
         <article class="outreach-item">
           <div class="outreach-header">
-            <h3>Els secrets de la seguretat quàntica</h3>
-            <span class="date">2025</span>
+            <h3>How quantum physics may change the world, again</h3>
+            <span class="date">2026</span>
+          </div>
+          <p>Daily 27.</p>
+        
+          <a
+            class="outreach-type article-badge"
+            href="https://daily27.info/2026/05/31/how-quantum-physics-may-change-the-world-again/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 2h9l5 5v15a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Zm8 1.5V8h4.5M8 12h8M8 16h8M8 20h5"/>
+            </svg>
+            Article publication
+          </a>
+        </article>
+
+
+        <article class="outreach-item">
+          <div class="outreach-header">
+            <h3>How quantum technologies are changing our world</h3>
+            <span class="date">2026</span>
           </div>
           <p>Pint of Science Barcelona, Barcelona, Spain.</p>
           <span class="outreach-type">Popular science talk</span>
@@ -303,15 +335,25 @@
           <p>The Swedish Federation of Young Scientists, Sweden.</p>
           <span class="outreach-type">Scientific comitee</span>
         </article>
-
+        
         <article class="outreach-item">
           <div class="outreach-header">
-            <h3>How quantum technologies are changing our world</h3>
-            <span class="date">2026</span>
+            <h3>Els secrets de la seguretat quàntica</h3>
+            <span class="date">2025</span>
           </div>
           <p>Pint of Science Barcelona, Barcelona, Spain.</p>
           <span class="outreach-type">Popular science talk</span>
         </article>
+        
+        <article class="outreach-item">
+          <div class="outreach-header">
+            <h3>Quantum mechanics: the solution to information security</h3>
+            <span class="date">2024</span>
+          </div>
+          <p> Qtalk, Lund University, Sweden.</p>
+          <span class="outreach-type">Talk to Master and PhD students</span>
+        </article>
+        
       </div>
     </section>
   </main>
