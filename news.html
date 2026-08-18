@@ -121,6 +121,55 @@
       color: var(--muted);
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .news-index {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+      margin: 0 auto 4rem auto;
+    }
+
+    .news-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 0px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 10px 28px rgba(37, 99, 235, 0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .news-card:hover,
+    .news-card:focus-visible {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: 0 16px 34px rgba(37, 99, 235, 0.14);
+      outline: none;
+    }
+
+    .news-card-title {
+      padding: 1.15rem 1.25rem 0.9rem;
+      text-align: center;
+      font-size: 1.25rem;
+      line-height: 1.3;
+      color: var(--title);
+    }
+
+    .news-card-image {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display: block;
+      border-top: 1px solid var(--border);
+      background: var(--accent-soft);
+    }
+
     .news-list {
       display: flex;
       flex-direction: column;
@@ -128,6 +177,7 @@
     }
 
     .news-item {
+      scroll-margin-top: 110px;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 0px;
@@ -212,6 +262,16 @@
         font-size: 2.4rem;
       }
 
+      .news-index {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 3rem;
+      }
+
+      .news-card-title {
+        font-size: 1.15rem;
+      }
+
       .news-item {
         padding: 1.25rem;
       }
@@ -288,8 +348,30 @@
       </p>
     </section>
 
+    <section class="news-index" aria-label="News overview">
+      <a class="news-card" href="#news-bound-entanglement">
+        <h2 class="news-card-title">Bound entanglement can boost communication</h2>
+        <img class="news-card-image" src="images/bound_entanglement.png" alt="Bound entanglement illustration" />
+      </a>
+
+      <a class="news-card" href="#news-noisy-entanglement">
+        <h2 class="news-card-title">When entanglement only helps when its noisy</h2>
+        <img class="news-card-image" src="images/EAPM.png" alt="Entanglement and noisy communication illustration" />
+      </a>
+
+      <a class="news-card" href="#news-quantum-classical-randomness">
+        <h2 class="news-card-title">Quantum vs. classical randomness</h2>
+        <img class="news-card-image" src="images/NC_QRNG.png" alt="Quantum and classical randomness illustration" />
+      </a>
+
+      <a class="news-card" href="#news-photons-randomness">
+        <h2 class="news-card-title">Communication and randomness with photons</h2>
+        <img class="news-card-image" src="images/PN_PM.png" alt="Photon communication and randomness illustration" />
+      </a>
+    </section>
+
     <section class="news-list">
-      <article class="news-item image-right">
+      <article id="news-bound-entanglement" class="news-item image-right">
         <h2 class="news-title">Bound entanglement can boost communication</h2>
 
         <div class="news-content">
@@ -307,7 +389,7 @@
         </div>
       </article>
 
-      <article class="news-item image-left">
+      <article id="news-noisy-entanglement" class="news-item image-left">
         <h2 class="news-title">When entanglement only helps when its noisy</h2>
 
         <div class="news-content">
@@ -326,7 +408,7 @@
         </div>
       </article>
 
-      <article class="news-item image-right">
+      <article id="news-quantum-classical-randomness" class="news-item image-right">
         <h2 class="news-title">Quantum vs. classical randomness</h2>
 
         <div class="news-content">
@@ -345,7 +427,7 @@
         </div>
       </article>
 
-      <article class="news-item image-left">
+      <article id="news-photons-randomness" class="news-item image-left">
         <h2 class="news-title">Communication and randomness with photons</h2>
 
         <div class="news-content">
