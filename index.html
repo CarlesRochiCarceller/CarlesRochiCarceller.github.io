@@ -125,14 +125,15 @@
     .hero-image {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start;
     }
 
     .hero-image img {
+      display: block;
       width: 100%;
-      max-width: 280px;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
       border-radius: 0px;
       border: 1px solid var(--border);
       background: var(--accent-soft);
@@ -254,7 +255,9 @@
       }
 
       .hero-image img {
-        max-width: 220px;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
       }
 
       .hero h1 {
@@ -309,11 +312,11 @@
 
   <main>
     <section class="hero">
-      <h1>Hello! I’m Carles</h1>
+      <h1>Hello! I’m Carles.</h1>
       <div class="hero-main">
         <div class="hero-text">
           <p>
-            I am a postdoctoral researcher working on quantum information theory. I am interested in foundations, quantum cryptography, quantum communication, quantum contextuality, ... and all sort of things which you can stick the word quantum in front and has at least some scientific basis!
+            I am a postdoctoral researcher working on quantum information theory. I am currently based in ICFO, Barcelona, Spain.
           </p>
           <p>
             Use the links below to learn more about my background, research output,
