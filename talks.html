@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scientific Talks | Carles Roch i Carceller</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/gh/jpswalsh/academicons/css/academicons.min.css');
+    :root {
+      --bg: #eef5ff;
+      --bg-gradient-start: #eaf3ff;
+      --bg-gradient-end: #dbeafe;
+      --text: #102a43;
+      --muted: #526d82;
+      --card: #ffffff;
+      --accent: #2563eb;
+      --accent-dark: #1e40af;
+      --accent-soft: #dbeafe;
+      --border: #bfdbfe;
+      --title: #0f3d75;
+      --youtube: #ff0000;
+      --youtube-soft: #ffe5e5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Calibri, "Segoe UI", Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+      color: var(--text);
+    }
+    header {
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+    nav {
+      max-width: 1000px; margin: 0 auto; padding: 1rem 1.5rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .social-links { display: flex; align-items: center; gap: 0.8rem; }
+    .social-links a {
+      color: var(--title); text-decoration: none; display: inline-flex;
+      align-items: center; justify-content: center; width: 28px; height: 28px;
+      border-radius: 8px; transition: background 0.2s ease, color 0.2s ease;
+    }
+    .social-links a:hover { color: var(--accent); background: var(--accent-soft); }
+    .social-links svg { width: 22px; height: 22px; fill: currentColor; }
+    .nav-links { list-style: none; display: flex; gap: 1rem; }
+    .nav-links a { text-decoration: none; color: var(--title); font-weight: 600; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    main { max-width: 1000px; margin: 0 auto; padding: 2.5rem 2rem 1rem 2rem; }
+    .page-intro { text-align: center; max-width: 820px; margin: 0 auto 4rem auto; }
+    .page-intro h1 {
+      font-family: Calibri, "Segoe UI", Arial, Helvetica, sans-serif;
+      font-size: 4.6rem; margin-bottom: 0.25rem; color: var(--title); letter-spacing: -0.04em;
+    }
+    .page-intro p { font-size: 1.1rem; color: var(--muted); }
+    .talk-section { margin-bottom: 3rem; }
+    .section-title {
+      font-size: 1.8rem; color: var(--title); margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border); padding-bottom: 0.75rem;
+    }
+    .talk-list { display: flex; flex-direction: column; gap: 1.25rem; }
+    .talk {
+      background: var(--card); border: 1px solid var(--border); border-radius: 0px;
+      padding: 1.5rem 1.75rem; box-shadow: 0 14px 35px rgba(37, 99, 235, 0.08);
+    }
+    .talk-header {
+      display: flex; justify-content: space-between; gap: 1rem;
+      align-items: baseline; margin-bottom: 0.35rem;
+    }
+    .talk h3 { color: var(--title); font-size: 1.15rem; }
+    .date { color: var(--accent); font-weight: 700; white-space: nowrap; }
+    .talk p { color: var(--muted); margin-bottom: 0.35rem; }
+    .talk-links { display: flex; align-items: center; flex-wrap: wrap; gap: 0.65rem; margin-top: 0.5rem; }
+    .talk-type {
+      display: inline-block; background: var(--accent-soft); color: var(--title);
+      border: 1px solid var(--border); padding: 0.25rem 0.55rem; font-weight: 700; font-size: 0.9rem;
+    }
+    .youtube-link {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      color: var(--youtube); background: var(--youtube-soft);
+      border: 1px solid rgba(255, 0, 0, 0.2); padding: 0.25rem 0.55rem;
+      text-decoration: none; font-weight: 700; font-size: 0.9rem;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .youtube-link:hover { background: #ffd6d6; transform: translateY(-1px); }
+    .youtube-link svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+    footer {
+      max-width: 1000px; margin: 0 auto; padding: 2rem 1.5rem;
+      color: var(--muted); font-size: 0.9rem; text-align: center;
+    }
+    @media (max-width: 750px) {
+      nav { flex-direction: column; gap: 1rem; }
+      .nav-links { flex-wrap: wrap; justify-content: center; }
+      main { padding: 2rem 1.25rem 1rem 1.25rem; }
+      .page-intro h1 { font-size: 2.4rem; }
+      .talk { padding: 1.25rem; }
+      .talk-header { flex-direction: column; gap: 0.1rem; }
+      .date { white-space: normal; }
+    }
+    /* Presentation map: transparent sea lets the page gradient show through. */
+    .page-intro { margin-bottom: 1.8rem; }
+    .talk-map {
+      --map-land: #123e6b;
+      --map-pin: #1e9bff;
+      margin: 0 auto 3rem;
+    }
+    .talk-map [hidden] { display: none !important; }
+    .map-toolbar {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 0.75rem; color: var(--muted); font-size: 0.9rem;
+    }
+    .map-views { display: inline-flex; gap: 0.25rem; }
+    .map-views button {
+      font: inherit; color: var(--title); background: transparent;
+      border: 1px solid var(--border); border-radius: 5px;
+      padding: 0.3rem 0.8rem; cursor: pointer; min-height: 36px;
+    }
+    .map-views button[aria-pressed="true"] { background: var(--title); color: white; border-color: var(--title); }
+    .map-viewport { position: relative; margin: 0.6rem 0 0.5rem; }
+    .map-svg { display: block; width: 100%; height: auto; overflow: hidden; }
+    .map-land { fill: var(--map-land); pointer-events: none; }
+    .map-pin { cursor: pointer; outline: none; }
+    .map-pin .pin-hit { fill: transparent; }
+    .map-pin .pin-dot {
+      fill: var(--map-pin); stroke: #fff; stroke-width: 2.5;
+      filter: drop-shadow(0 1px 2px rgba(16, 42, 67, 0.35));
+      vector-effect: non-scaling-stroke;
+    }
+    .map-pin .pin-focus { fill: none; stroke: #fff; stroke-width: 2; opacity: 0; vector-effect: non-scaling-stroke; }
+    .map-pin:hover .pin-focus, .map-pin:focus-visible .pin-focus,
+    .map-pin[aria-expanded="true"] .pin-focus { opacity: 1; }
+    .map-pin:hover .pin-dot, .map-pin:focus-visible .pin-dot,
+    .map-pin[aria-expanded="true"] .pin-dot { fill: #74dcff; stroke: #fff; }
+    .map-caption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.6rem 1.5rem; }
+    .map-legend { display: flex; flex-wrap: wrap; gap: 0.9rem; color: var(--muted); font-size: 0.85rem; }
+    .map-legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+    .legend-dot { width: 16px; height: 16px; border-radius: 50%; background: var(--map-pin); border: 2px solid #fff; box-shadow: 0 1px 3px rgba(16, 42, 67, 0.3); }
+    .map-help { margin-top: 0.65rem; color: var(--muted); font-size: 0.88rem; }
+    .map-picker { display: flex; gap: 0.65rem; align-items: center; flex-wrap: wrap; margin-top: 1rem; }
+    .map-picker label { color: var(--title); font-size: 0.9rem; }
+    .map-picker select {
+      max-width: 100%; min-height: 40px; padding: 0.4rem 2rem 0.4rem 0.65rem;
+      color: var(--title); background: rgba(255,255,255,0.55);
+      border: 1px solid var(--border); border-radius: 5px; font: inherit; font-size: 0.9rem;
+    }
+    .map-details {
+      margin-top: 1rem; padding: 1rem 1.25rem;
+      border-left: 3px solid var(--accent); background: rgba(255,255,255,0.65);
+    }
+    .map-details h3 { color: var(--title); font-size: 1.05rem; }
+    .map-details ul { list-style: none; }
+    .map-details li { margin-top: 0.75rem; }
+    .map-details a { color: var(--title); font-weight: 600; text-underline-offset: 3px; }
+    .map-details small { display: block; color: var(--muted); }
+    .map-details-close { float: right; font: inherit; color: var(--title); border: 0; background: transparent; padding: 0.1rem 0.3rem; cursor: pointer; text-decoration: underline; }
+    .map-details :focus-visible, .map-views :focus-visible, .map-picker :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+    .talk { scroll-margin-top: 6rem; }
+    .talk:target { border-color: var(--accent); box-shadow: 0 0 0 2px var(--border); }
+    .map-tooltip { position: absolute; z-index: 2; pointer-events: none; transform: translate(-50%,-100%); padding: 0.3rem 0.6rem; color: #fff; background: var(--title); border-radius: 4px; font-size: 0.8rem; white-space: normal; width: max-content; max-width: min(24rem,100%); overflow-wrap: anywhere; }
+    .map-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    @media (max-width: 750px) {
+      .talk-map { margin-bottom: 2rem; }
+      .map-toolbar { font-size: 0.8rem; }
+      .map-picker { align-items: stretch; }
+      .map-picker select { flex: 1; min-width: 0; }
+      .talk { scroll-margin-top: 10rem; }
+    }
+    @media print {
+      .map-views, .map-picker, .map-details, .map-tooltip { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="social-links" aria-label="Social links">
+        <a href="https://scholar.google.com/citations?user=_GYGsRcAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 24a7 7 0 1 1 0-14 7 7 0 0 1 0 14Zm0-24L0 9.5l4.84 3.82A8.98 8.98 0 0 1 12 9a8.98 8.98 0 0 1 7.16 4.32L24 9.5 12 0Z"></path></svg>
+        </a>
+        <a href="https://se.linkedin.com/in/carlesroch" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12Zm1.78 13.02H3.54V9H7.1v11.45ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z"></path></svg>
+        </a>
+        <a href="mailto:carles.roch@icfo.eu" aria-label="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm10 9.2L2.4 6.8V18h19.2V6.8L12 13.2Zm0-2.4L21.2 6H2.8L12 10.8Z"></path></svg>
+        </a>
+        <a href="https://github.com/chalswater" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3A12 12 0 0 0 8.2 23.7c.6.1.82-.26.82-.58v-2.02c-3.34.73-4.04-1.6-4.04-1.6-.55-1.38-1.34-1.75-1.34-1.75-1.09-.75.08-.74.08-.74 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.48.99.11-.78.42-1.3.76-1.6-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 5.64c1.02.01 2.05.14 3.01.41 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.22.69.83.57A12 12 0 0 0 12 .3Z"></path></svg>
+        </a>
+        <a href="https://arxiv.org/search/quant-ph?query=Carles+Roch+i+Carceller&amp;searchtype=author&amp;abstracts=show&amp;order=-announced_date_first&amp;size=50" target="_blank" rel="noopener noreferrer" aria-label="arXiv">
+          <i class="ai ai-arxiv" aria-hidden="true" style="font-size: 22px;"></i>
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="cv.html">CV</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a class="active" href="talks.html">Talks</a></li>
+        <li><a href="outreach.html">Outreach</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="page-intro">
+      <h1>Scientific talks</h1>
+      <p>Presentations in the form of talks, seminars and posters on scientific conferences.</p>
+    </section>
+    <section class="talk-map" id="talk-map" aria-label="Presentation locations around the world">
+      <div class="map-toolbar">
+        <span id="talk-map-summary">17 presentations · 13 locations</span>
+        <div class="map-views" role="group" aria-label="Map view" data-map-controls hidden>
+          <button type="button" data-map-view="world" aria-pressed="true">World</button>
+          <button type="button" data-map-view="europe" aria-pressed="false">Europe</button>
+        </div>
+      </div>
+      <div class="map-viewport">
+        <svg class="map-svg" id="talk-map-svg" viewBox="0 0 1000 450" width="1000" height="450" role="group" aria-labelledby="talk-map-title talk-map-description">
+          <title id="talk-map-title">Scientific presentations around the world</title>
+          <desc id="talk-map-description">Presentation locations in Europe, Brazil, South Korea and Canada. Select a marker to see the corresponding presentations. Markers use the presentation venue or host institution's location. ICE 6 has no physical venue and is available in the location list.</desc>
+          <!-- Embedded illustrative land silhouettes: no map download is required. -->
+          <g class="map-land" id="talk-map-land" aria-hidden="true">
+            <path d="M166.91,36.71Q166.79,35.61 170.81,35.26L191.48,33.42Q195.50,33.07 197.12,34.15L205.41,39.71Q207.02,40.79 209.57,40.79L222.66,40.79Q225.21,40.79 228.47,39.71L245.28,34.15Q248.55,33.07 252.70,32.71L274.08,30.90Q278.24,30.55 281.78,30.55L299.98,30.55Q303.52,30.55 305.52,31.62L315.81,37.12Q317.81,38.19 319.21,39.66L326.40,47.25Q327.80,48.73 328.30,50.64L330.92,60.49Q331.43,62.40 335.21,62.80L354.66,64.81Q358.44,65.20 360.44,67.61L370.74,79.98Q372.74,82.38 370.87,84.45L361.24,95.09Q359.37,97.16 356.70,98.42L343.00,104.92Q340.33,106.19 341.11,107.04L345.13,111.41Q345.91,112.26 343.77,112.68L332.77,114.88Q330.63,115.31 328.37,117.45L316.71,128.50Q314.44,130.65 313.44,131.95L308.26,138.62Q307.25,139.92 305.46,141.65L296.23,150.57Q294.44,152.30 294.38,154.47L294.09,165.62Q294.03,167.79 293.24,168.23L289.14,170.46Q288.35,170.89 288.04,168.72L286.46,157.57Q286.16,155.40 284.02,155.40L273.02,155.40Q270.88,155.40 268.54,156.27L256.51,160.73Q254.17,161.60 253.37,163.77L249.25,174.92Q248.44,177.08 250.85,177.95L263.19,182.41Q265.60,183.27 266.76,182.84L272.72,180.61Q273.88,180.18 273.64,181.91L272.37,190.81Q272.13,192.55 273.13,193.41L278.27,197.86Q279.27,198.72 279.45,200.88L280.33,211.98Q280.51,214.14 281.93,215.00L289.27,219.44Q290.70,220.30 291.41,220.73L295.11,222.95Q295.83,223.38 295.44,223.81L293.43,226.03Q293.04,226.46 291.23,225.60L281.91,221.16Q280.10,220.30 278.75,218.58L271.80,209.70Q270.45,207.98 268.37,206.68L257.70,200.02Q255.62,198.72 253.17,197.86L240.54,193.41Q238.08,192.55 236.46,191.25L228.15,184.57Q226.53,183.27 225.79,181.54L221.98,172.62Q221.24,170.89 220.83,168.29L218.71,154.90Q218.30,152.30 217.37,151.87L212.56,149.64Q211.63,149.20 212.09,151.37L214.50,162.53Q214.97,164.70 215.30,166.43L217.00,175.35Q217.32,177.08 216.33,176.65L211.21,174.42Q210.21,173.99 209.32,171.82L204.70,160.67Q203.81,158.50 203.63,156.76L202.69,147.84Q202.51,146.11 201.90,143.94L198.77,132.82Q198.16,130.65 198.49,127.65L200.22,112.22Q200.56,109.22 201.30,106.69L205.10,93.72Q205.84,91.20 205.31,89.56L202.56,81.11Q202.03,79.47 201.04,77.87L195.99,69.62Q195.00,68.02 192.88,67.62L181.98,65.59Q179.86,65.20 177.34,65.99L164.34,70.06Q161.81,70.85 157.33,72.06L134.27,78.27Q129.79,79.47 132.78,77.87L148.13,69.62Q151.12,68.02 150.43,66.84L146.88,60.80Q146.19,59.63 146.93,58.10L150.71,50.26Q151.44,48.73 153.71,47.99L165.40,44.16Q167.67,43.41 167.55,42.32L166.91,36.71Z"/>
+            <path d="M369.91,62.52Q367.15,65.20 370.32,64.81L386.61,62.80Q389.78,62.40 392.72,60.49L407.85,50.64Q410.79,48.73 413.38,47.62L426.69,41.90Q429.28,40.79 432.10,39.35L446.60,31.98Q449.42,30.55 451.28,29.18L460.84,22.18Q462.70,20.82 461.46,19.57L455.10,13.14Q453.86,11.89 450.91,11.33L435.76,8.47Q432.81,7.91 428.55,8.47L406.65,11.33Q402.40,11.89 399.87,13.14L386.90,19.57Q384.37,20.82 384.88,22.53L387.51,31.35Q388.02,33.07 387.86,34.88L387.03,44.24Q386.87,46.06 384.11,48.74L369.91,62.52Z"/>
+            <path d="M331.61,56.63Q330.60,59.63 333.30,59.63L347.20,59.63Q349.90,59.63 353.06,57.73L369.31,47.96Q372.47,46.06 372.73,44.24L374.02,34.88Q374.27,33.07 371.92,32.36L359.84,28.76Q357.49,28.06 354.74,29.48L340.58,36.77Q337.83,38.19 336.82,41.19L331.61,56.63Z"/>
+            <path d="M285.73,23.53Q281.26,23.19 285.11,22.21L304.89,17.20Q308.74,16.22 312.91,15.62L334.34,12.50Q338.51,11.89 341.22,12.19L355.19,13.72Q357.91,14.02 358.00,15.30L358.48,21.90Q358.57,23.19 354.95,24.22L336.33,29.52Q332.70,30.55 329.98,29.85L315.94,26.30Q313.21,25.60 308.74,25.27L285.73,23.53Z"/>
+            <path d="M286.58,220.24Q285.59,217.22 287.84,216.79L299.41,214.57Q301.66,214.14 303.54,213.71L313.21,211.49Q315.09,211.06 317.26,211.92L328.42,216.36Q330.59,217.22 331.66,218.08L337.18,222.52Q338.26,223.38 340.46,224.24L351.78,228.68Q353.98,229.54 355.44,231.26L362.94,240.12Q364.40,241.85 365.51,243.14L371.24,249.78Q372.35,251.08 374.22,251.51L383.80,253.72Q385.67,254.15 387.16,254.58L394.83,256.80Q396.33,257.23 397.82,258.09L405.53,262.52Q407.03,263.38 407.41,264.25L409.40,268.68Q409.79,269.54 409.10,271.70L405.58,282.78Q404.90,284.94 403.87,286.67L398.55,295.55Q397.52,297.28 397.28,299.44L396.06,310.57Q395.82,312.73 393.78,314.46L383.31,323.38Q381.27,325.11 380.37,326.84L375.78,335.77Q374.88,337.50 373.69,339.24L367.57,348.16Q366.38,349.89 365.61,351.63L361.66,360.53Q360.89,362.26 359.07,363.56L349.72,370.21Q347.90,371.50 347.29,373.22L344.12,382.03Q343.50,383.74 343.30,385.44L342.27,394.15Q342.06,395.84 342.40,397.92L344.12,408.62Q344.46,410.69 343.48,411.51L338.45,415.71Q337.47,416.53 335.90,414.89L327.85,406.44Q326.28,404.80 325.32,401.85L320.38,386.69Q319.42,383.74 319.32,380.74L318.77,365.27Q318.66,362.26 318.74,359.23L319.17,343.63Q319.25,340.60 319.14,337.57L318.58,321.95Q318.47,318.92 317.43,316.32L312.13,302.96Q311.10,300.37 309.07,298.21L298.62,287.10Q296.59,284.94 294.95,281.92L286.48,266.40Q284.84,263.38 285.17,261.23L286.91,250.15Q287.25,248.00 288.00,246.71L291.90,240.06Q292.65,238.77 291.66,235.75L286.58,220.24Z"/>
+            <path d="M457.61,180.67Q455.72,183.27 455.66,185.87L455.33,199.21Q455.26,201.81 455.97,203.53L459.62,212.41Q460.33,214.14 461.80,215.87L469.35,224.74Q470.81,226.46 472.30,227.32L479.92,231.75Q481.41,232.62 484.38,232.62L499.68,232.62Q502.66,232.62 504.14,233.05L511.80,235.26Q513.29,235.69 514.78,236.99L522.44,243.63Q523.93,244.92 524.30,247.51L526.20,260.80Q526.56,263.38 527.66,265.54L533.31,276.62Q534.41,278.78 534.37,281.80L534.15,297.34Q534.11,300.37 535.50,302.96L542.69,316.32Q544.09,318.92 544.71,321.52L547.89,334.90Q548.51,337.50 549.46,339.67L554.32,350.82Q555.27,352.99 557.03,352.99L566.07,352.99Q567.83,352.99 569.42,350.82L577.57,339.67Q579.15,337.50 580.00,335.77L584.33,326.84Q585.18,325.11 586.04,322.94L590.48,311.80Q591.34,309.64 593.27,307.91L603.18,299.01Q605.11,297.28 605.59,294.69L608.05,281.37Q608.53,278.78 608.21,276.62L606.57,265.54Q606.25,263.38 607.39,260.80L613.22,247.51Q614.35,244.92 616.55,242.77L627.89,231.69Q630.09,229.54 630.76,227.38L634.20,216.30Q634.87,214.14 632.65,214.14L621.22,214.14Q619.00,214.14 617.86,213.28L611.96,208.84Q610.82,207.98 609.60,205.82L603.36,194.71Q602.15,192.55 600.89,189.95L594.41,176.59Q593.15,173.99 591.90,171.82L585.51,160.67Q584.26,158.50 583.48,157.63L579.45,153.17Q578.67,152.30 576.51,151.87L565.40,149.64Q563.24,149.20 561.82,149.20L554.54,149.20Q553.12,149.20 550.98,148.77L539.96,146.54Q537.82,146.11 536.00,144.37L526.66,135.47Q524.84,133.74 523.10,133.74L514.16,133.74Q512.42,133.74 510.68,134.17L501.74,136.39Q500.00,136.82 498.25,136.82L489.28,136.82Q487.53,136.82 486.09,138.56L478.68,147.47Q477.23,149.20 476.11,151.37L470.31,162.53Q469.19,164.70 467.30,167.30L457.61,180.67Z"/>
+            <path d="M478.58,136.82Q476.31,136.82 476.36,135.10L476.64,126.22Q476.69,124.50 476.91,123.21L478.01,116.59Q478.22,115.31 480.26,114.88L490.74,112.68Q492.78,112.26 493.45,111.41L496.94,107.04Q497.62,106.19 496.30,105.34L489.53,101.00Q488.21,100.16 489.86,99.74L498.35,97.58Q500.00,97.16 500.97,96.32L505.98,92.04Q506.95,91.20 507.90,90.38L512.78,86.13Q513.72,85.31 514.35,84.90L517.56,82.79Q518.18,82.38 518.13,81.17L517.86,74.92Q517.81,73.71 518.41,73.31L521.50,71.25Q522.10,70.85 522.46,71.65L524.30,75.78Q524.66,76.58 524.39,77.39L523.00,81.57Q522.73,82.38 524.00,82.38L530.54,82.38Q531.82,82.38 533.09,82.38L539.63,82.38Q540.91,82.38 542.13,81.97L548.44,79.88Q549.66,79.47 550.19,78.66L552.90,74.51Q553.43,73.71 554.55,72.91L560.32,68.81Q561.44,68.02 561.68,67.62L562.92,65.59Q563.16,65.20 561.94,65.20L555.66,65.20Q554.45,65.20 553.78,64.81L550.37,62.80Q549.71,62.40 549.78,60.87L550.15,52.96Q550.22,51.42 549.63,51.42L546.62,51.42Q546.03,51.42 545.84,52.19L544.86,56.11Q544.67,56.87 543.86,57.65L539.71,61.63Q538.90,62.40 539.02,63.59L539.66,69.67Q539.79,70.85 539.24,71.65L536.42,75.78Q535.87,76.58 534.93,76.58L530.09,76.58Q529.15,76.58 528.78,75.78L526.89,71.65Q526.52,70.85 525.88,70.46L522.58,68.41Q521.94,68.02 521.35,68.41L518.28,70.46Q517.68,70.85 516.73,70.06L511.84,65.99Q510.89,65.20 510.85,64.03L510.67,58.04Q510.64,56.87 511.76,55.73L517.55,49.87Q518.67,48.73 520.30,47.62L528.68,41.90Q530.31,40.79 532.45,40.06L543.47,36.34Q545.62,35.61 547.84,35.61L559.26,35.61Q561.49,35.61 562.21,36.34L565.95,40.06Q566.68,40.79 568.86,41.53L580.09,45.32Q582.28,46.06 583.32,45.69L588.67,43.78Q589.71,43.41 591.01,43.05L597.70,41.16Q599.01,40.79 600.84,40.42L610.28,38.55Q612.12,38.19 614.47,37.83L626.57,35.97Q628.92,35.61 629.94,34.90L635.16,31.26Q636.17,30.55 638.89,30.55L652.90,30.55Q655.62,30.55 657.32,29.85L666.03,26.30Q667.73,25.60 669.83,24.93L680.66,21.49Q682.77,20.82 685.90,20.82L702.01,20.82Q705.14,20.82 708.51,21.83L725.81,27.04Q729.17,28.06 732.57,28.76L750.02,32.36Q753.42,33.07 756.72,33.07L773.69,33.07Q776.99,33.07 780.54,33.78L798.77,37.47Q802.31,38.19 805.25,38.55L820.35,40.42Q823.29,40.79 827.41,41.90L848.59,47.62Q852.71,48.73 855.47,49.11L869.69,51.05Q872.45,51.42 873.56,52.96L879.26,60.87Q880.36,62.40 878.41,63.19L868.38,67.23Q866.43,68.02 866.01,69.62L863.86,77.87Q863.44,79.47 863.79,81.11L865.61,89.56Q865.96,91.20 864.99,91.20L859.98,91.20Q859.01,91.20 857.09,89.16L847.19,78.63Q845.27,76.58 842.70,75.38L829.50,69.22Q826.94,68.02 824.80,68.41L813.80,70.46Q811.67,70.85 811.01,72.06L807.66,78.27Q807.00,79.47 809.42,81.11L821.85,89.56Q824.27,91.20 824.91,93.30L828.22,104.09Q828.87,106.19 828.21,107.46L824.87,114.03Q824.22,115.31 823.07,115.73L817.18,117.93Q816.04,118.36 816.48,120.08L818.72,128.93Q819.16,130.65 819.68,131.95L822.39,138.62Q822.91,139.92 822.37,140.35L819.60,142.58Q819.06,143.01 817.86,141.71L811.71,135.03Q810.51,133.74 809.97,132.44L807.19,125.79Q806.65,124.50 805.62,124.50L800.32,124.50Q799.29,124.50 799.82,125.79L802.53,132.44Q803.06,133.74 803.34,135.47L804.77,144.37Q805.05,146.11 805.83,147.41L809.81,154.10Q810.58,155.40 810.35,157.13L809.18,166.06Q808.95,167.79 808.18,169.09L804.20,175.78Q803.42,177.08 801.78,177.95L793.34,182.41Q791.70,183.27 790.24,183.27L782.74,183.27Q781.28,183.27 781.14,184.57L780.40,191.25Q780.26,192.55 781.18,193.84L785.92,200.51Q786.84,201.81 787.00,203.10L787.79,209.76Q787.94,211.06 786.94,212.35L781.83,219.01Q780.84,220.30 779.69,219.87L773.80,217.65Q772.65,217.22 771.74,215.50L767.06,206.62Q766.15,204.89 765.88,205.76L764.44,210.20Q764.16,211.06 765.07,213.22L769.74,224.30Q770.64,226.46 771.47,228.61L775.70,239.69Q776.53,241.85 775.79,242.28L771.99,244.49Q771.25,244.92 770.05,242.34L763.88,229.05Q762.68,226.46 762.06,223.44L758.87,207.91Q758.25,204.89 757.35,203.60L752.76,196.93Q751.86,195.63 750.65,194.77L744.37,190.32Q743.15,189.46 741.86,188.16L735.21,181.48Q733.91,180.18 732.89,180.61L727.62,182.84Q726.59,183.27 725.67,184.57L720.93,191.25Q720.01,192.55 719.38,193.41L716.11,197.86Q715.47,198.72 714.89,200.45L711.91,209.33Q711.33,211.06 710.70,212.78L707.45,221.66Q706.82,223.38 706.05,222.95L702.12,220.73Q701.36,220.30 700.02,217.28L693.16,201.74Q691.82,198.72 691.27,196.99L688.45,188.09Q687.90,186.36 686.28,185.07L677.96,178.38Q676.35,177.08 674.42,176.22L664.53,171.76Q662.61,170.89 660.86,171.32L651.82,173.55Q650.07,173.99 649.29,173.55L645.32,171.32Q644.54,170.89 644.73,172.62L645.67,181.54Q645.85,183.27 644.90,185.00L640.00,193.90Q639.05,195.63 637.29,196.93L628.25,203.60Q626.49,204.89 625.03,205.32L617.55,207.54Q616.10,207.98 615.27,206.25L611.02,197.36Q610.19,195.63 609.32,193.47L604.83,182.34Q603.96,180.18 602.31,177.58L593.84,164.20Q592.19,161.60 591.72,160.30L589.29,153.60Q588.82,152.30 589.05,151.00L590.22,144.31Q590.44,143.01 589.30,142.14L583.44,137.69Q582.30,136.82 580.55,136.82L571.57,136.82Q569.83,136.82 569.02,135.53L564.87,128.87Q564.06,127.57 563.33,127.14L559.60,124.93Q558.88,124.50 558.95,125.36L559.31,129.79Q559.38,130.65 559.10,131.52L557.64,135.96Q557.36,136.82 556.63,136.39L552.89,134.17Q552.17,133.74 551.73,132.44L549.50,125.79Q549.06,124.50 547.95,123.21L542.24,116.59Q541.13,115.31 540.07,114.45L534.60,110.07Q533.54,109.22 533.22,109.64L531.61,111.83Q531.30,112.26 532.05,113.54L535.89,120.14Q536.63,121.43 537.34,121.86L540.99,124.07Q541.70,124.50 542.05,124.50L543.81,124.50Q544.16,124.50 543.84,124.93L542.20,127.14Q541.88,127.57 541.54,127.57L539.77,127.57Q539.42,127.57 539.44,128.00L539.56,130.22Q539.59,130.65 539.24,130.65L537.46,130.65Q537.11,130.65 536.72,129.79L534.73,125.36Q534.34,124.50 533.62,123.64L529.90,119.22Q529.17,118.36 528.46,117.51L524.79,113.11Q524.08,112.26 523.07,112.26L517.87,112.26Q516.85,112.26 515.85,112.68L510.68,114.88Q509.68,115.31 509.34,115.73L507.63,117.93Q507.29,118.36 507.30,118.79L507.32,121.00Q507.33,121.43 506.30,122.29L501.03,126.71Q500.00,127.57 499.65,128.00L497.87,130.22Q497.53,130.65 496.82,131.52L493.22,135.96Q492.52,136.82 490.25,136.82L478.58,136.82Z"/>
+            <path d="M488.68,93.76Q488.35,94.17 489.33,94.17L494.36,94.17Q495.34,94.17 496.48,93.34L502.32,89.08Q503.45,88.25 502.97,87.43L500.48,83.20Q500.00,82.38 499.37,81.97L496.12,79.88Q495.49,79.47 495.65,78.27L496.52,72.06Q496.68,70.85 495.92,70.46L491.99,68.41Q491.22,68.02 490.58,68.81L487.28,72.91Q486.64,73.71 486.93,74.51L488.42,78.66Q488.71,79.47 489.34,79.88L492.56,81.97Q493.18,82.38 492.54,82.79L489.21,84.90Q488.56,85.31 488.87,86.13L490.43,90.38Q490.74,91.20 490.40,91.62L488.68,93.76Z"/>
+            <path d="M476.96,88.70Q476.91,89.72 478.21,89.52L484.89,88.45Q486.19,88.25 486.37,87.43L487.32,83.20Q487.50,82.38 487.05,81.77L484.71,78.63Q484.25,78.02 483.28,78.63L478.25,81.77Q477.27,82.38 477.22,83.41L476.96,88.70Z"/>
+            <path d="M450.09,53.19Q449.36,54.14 450.52,54.33L456.47,55.31Q457.63,55.50 459.46,54.93L468.88,51.99Q470.71,51.42 470.18,50.86L467.47,47.96Q466.95,47.39 465.21,47.39L456.29,47.39Q454.55,47.39 453.83,48.34L450.09,53.19Z"/>
+            <path d="M520.48,120.12Q520.49,120.51 520.79,120.42L522.36,119.98Q522.66,119.89 522.74,119.25L523.15,115.95Q523.23,115.31 522.96,115.26L521.55,115.04Q521.28,115.00 521.16,115.38L520.52,117.36Q520.40,117.75 520.41,118.14L520.48,120.12Z"/>
+            <path d="M520.29,126.89Q520.21,127.88 520.62,127.84L522.75,127.61Q523.16,127.57 523.27,126.71L523.83,122.29Q523.93,121.43 523.49,121.34L521.19,120.90Q520.74,120.81 520.67,121.80L520.29,126.89Z"/>
+            <path d="M530.87,131.08Q530.43,130.65 531.57,130.61L537.44,130.39Q538.58,130.34 538.40,130.99L537.50,134.32Q537.32,134.97 536.79,134.80L534.07,133.91Q533.54,133.74 533.10,133.30L530.87,131.08Z"/>
+            <path d="M558.57,138.85Q558.49,138.68 559.51,138.77L564.76,139.21Q565.79,139.30 565.59,139.47L564.58,140.36Q564.38,140.53 563.64,140.45L559.82,140.00Q559.08,139.92 558.99,139.74L558.57,138.85Z"/>
+            <path d="M524.98,78.74Q524.81,79.18 525.33,79.26L527.95,79.68Q528.46,79.76 528.46,79.28L528.45,76.78Q528.45,76.29 528.11,76.25L526.32,76.04Q525.97,76.00 525.81,76.45L524.98,78.74Z"/>
+            <path d="M456.71,161.49Q456.60,161.44 456.70,161.25L457.20,160.24Q457.30,160.05 457.51,159.98L458.63,159.65Q458.85,159.58 458.79,159.73L458.48,160.52Q458.42,160.67 458.27,160.82L457.51,161.60Q457.36,161.75 457.25,161.71L456.71,161.49Z"/>
+            <path d="M459.44,162.26Q459.26,162.22 459.41,162.04L460.18,161.15Q460.33,160.98 460.44,161.02L460.98,161.24Q461.09,161.29 461.01,161.46L460.61,162.35Q460.53,162.53 460.35,162.48L459.44,162.26Z"/>
+            <path d="M628.21,287.10Q629.44,284.94 629.71,286.67L631.11,295.55Q631.39,297.28 630.46,299.87L625.68,313.23Q624.75,315.82 623.51,317.56L617.10,326.47Q615.86,328.21 615.61,326.91L614.35,320.22Q614.11,318.92 615.03,316.32L619.76,302.96Q620.69,300.37 621.91,298.21L628.21,287.10Z"/>
+            <path d="M830.42,152.73Q829.92,152.30 830.47,151.87L833.35,149.64Q833.91,149.20 834.29,148.34L836.26,143.88Q836.65,143.01 837.35,142.14L840.95,137.69Q841.65,136.82 842.11,135.53L844.47,128.87Q844.93,127.57 844.63,126.28L843.08,119.65Q842.78,118.36 842.99,117.51L844.09,113.11Q844.30,112.26 844.97,112.26L848.44,112.26Q849.12,112.26 849.25,113.11L849.94,117.51Q850.07,118.36 849.83,119.22L848.59,123.64Q848.35,124.50 848.81,126.22L851.17,135.10Q851.63,136.82 850.58,137.69L845.23,142.14Q844.18,143.01 842.94,143.44L836.55,145.67Q835.30,146.11 835.05,147.41L833.75,154.10Q833.49,155.40 832.99,154.97L830.42,152.73Z"/>
+            <path d="M811.89,178.66Q811.89,180.18 812.25,180.18L814.12,180.18Q814.49,180.18 814.54,178.88L814.84,172.19Q814.90,170.89 814.48,170.67L812.34,169.56Q811.93,169.34 811.92,170.86L811.89,178.66Z"/>
+            <path d="M712.36,228.68Q712.40,229.54 713.13,229.32L716.91,228.22Q717.64,228.00 717.21,226.71L714.95,220.06Q714.51,218.76 714.18,219.41L712.46,222.73Q712.12,223.38 712.16,224.24L712.36,228.68Z"/>
+            <path d="M752.76,234.34Q752.35,232.62 753.87,233.91L761.71,240.55Q763.23,241.85 764.71,244.00L772.32,255.08Q773.80,257.23 774.87,258.52L780.36,265.17Q781.43,266.46 780.31,266.46L774.58,266.46Q773.46,266.46 772.03,264.74L764.66,255.88Q763.23,254.15 762.12,252.86L756.40,246.22Q755.29,244.92 754.88,243.20L752.76,234.34Z"/>
+            <path d="M778.75,266.89Q778.77,266.46 780.98,266.89L792.32,269.11Q794.52,269.54 795.98,269.97L803.47,272.19Q804.93,272.62 804.52,273.05L802.44,275.27Q802.04,275.70 799.84,275.27L788.56,273.05Q786.36,272.62 785.28,272.19L779.69,269.97Q778.60,269.54 778.63,269.11L778.75,266.89Z"/>
+            <path d="M789.77,240.49Q789.75,238.77 791.54,237.05L800.70,228.18Q802.48,226.46 803.65,227.32L809.63,231.75Q810.79,232.62 811.58,234.34L815.66,243.20Q816.45,244.92 815.32,246.65L809.50,255.51Q808.36,257.23 806.86,257.66L799.13,259.88Q797.63,260.31 796.54,259.01L790.95,252.37Q789.86,251.08 789.85,249.35L789.77,240.49Z"/>
+            <path d="M815.05,195.14Q814.30,192.55 815.04,192.55L818.81,192.55Q819.54,192.55 820.55,194.27L825.75,203.16Q826.76,204.89 826.97,206.62L828.03,215.50Q828.24,217.22 829.06,218.08L833.27,222.52Q834.09,223.38 833.78,224.24L832.18,228.68Q831.87,229.54 831.07,228.68L826.94,224.24Q826.14,223.38 825.23,221.66L820.55,212.78Q819.64,211.06 818.89,208.47L815.05,195.14Z"/>
+            <path d="M848.70,252.37Q848.37,251.08 850.59,251.51L862.04,253.72Q864.27,254.15 866.47,255.01L877.81,259.44Q880.01,260.31 881.82,261.17L891.13,265.60Q892.94,266.46 893.88,268.19L898.76,277.05Q899.71,278.78 897.86,278.78L888.33,278.78Q886.47,278.78 884.71,277.92L875.63,273.48Q873.87,272.62 872.10,271.33L863.03,264.68Q861.26,263.38 859.79,262.95L852.25,260.74Q850.78,260.31 850.44,259.01L848.70,252.37Z"/>
+            <path d="M793.20,317.99Q793.69,315.82 794.67,314.52L799.70,307.84Q800.67,306.54 803.09,305.25L815.53,298.58Q817.95,297.28 819.19,296.41L825.53,291.97Q826.76,291.11 828.54,291.54L837.69,293.76Q839.47,294.19 840.76,292.90L847.41,286.24Q848.70,284.94 850.18,284.94L857.78,284.94Q859.26,284.94 859.73,286.67L862.15,295.55Q862.62,297.28 863.65,297.71L868.90,299.93Q869.93,300.37 871.08,297.78L877.01,284.45Q878.16,281.86 878.93,284.02L882.88,295.12Q883.65,297.28 884.27,299.44L887.45,310.57Q888.07,312.73 888.67,314.46L891.74,323.38Q892.33,325.11 892.10,326.84L890.90,335.77Q890.67,337.50 888.54,340.10L877.60,353.48Q875.48,356.08 873.27,357.81L861.92,366.70Q859.72,368.43 858.19,368.00L850.37,365.78Q848.85,365.35 848.02,364.05L843.76,357.38Q842.94,356.08 841.32,354.78L833.00,348.10Q831.38,346.80 829.10,347.23L817.41,349.46Q815.14,349.89 812.72,350.76L800.30,355.22Q797.88,356.08 796.77,355.22L791.04,350.76Q789.93,349.89 789.96,347.29L790.13,333.91Q790.16,331.30 790.66,329.14L793.20,317.99Z"/>
+            <path d="M852.92,372.79Q853.26,371.50 854.41,371.93L860.31,374.14Q861.46,374.57 860.40,375.86L854.98,382.46Q853.93,383.74 853.50,383.32L851.27,381.12Q850.83,380.69 851.17,379.41L852.92,372.79Z"/>
+            <path d="M934.05,354.72Q934.63,352.99 934.99,354.29L936.84,360.97Q937.20,362.26 937.65,362.70L939.94,364.92Q940.39,365.35 939.53,366.21L935.08,370.64Q934.22,371.50 933.26,371.93L928.35,374.14Q927.40,374.57 927.83,373.28L930.06,366.64Q930.49,365.35 931.07,363.62L934.05,354.72Z"/>
+            <path d="M920.95,375.43Q922.52,374.57 922.58,375.00L922.94,377.21Q923.00,377.64 921.13,378.92L911.51,385.50Q909.64,386.78 907.71,387.63L897.77,391.99Q895.84,392.84 895.81,392.41L895.63,390.24Q895.59,389.81 897.79,388.54L909.12,381.97Q911.32,380.69 912.89,379.84L920.95,375.43Z"/>
+            <path d="M280.17,180.18Q279.08,180.18 280.96,179.75L290.65,177.52Q292.53,177.08 294.23,177.95L302.96,182.41Q304.66,183.27 303.51,183.70L297.60,185.93Q296.45,186.36 295.11,185.50L288.22,181.04Q286.88,180.18 285.79,180.18L280.17,180.18Z"/>
+            <path d="M307.21,189.89Q306.52,189.46 308.35,189.46L317.76,189.46Q319.60,189.46 319.92,189.89L321.57,192.11Q321.89,192.55 320.43,192.55L312.88,192.55Q311.42,192.55 310.73,192.11L307.21,189.89Z"/>
+          </g>
+          <g id="talk-map-markers"><a class="map-pin" href="#talk-01" aria-label="Ottawa, Canada · 1 presentation" transform="translate(319.059,107.937)"><title>Ottawa, Canada · 1 presentation</title><circle class="pin-hit" r="14"/><circle class="pin-focus" r="12"/><circle class="pin-dot" r="8"/></a>
+<a class="map-pin" href="#talk-02" aria-label="Sevilla, Spain · 1 presentation" transform="translate(485.157,132.536)"><title>Sevilla, Spain · 1 presentation</title><circle class="pin-hit" r="14"/><circle class="pin-focus" r="12"/><circle class="pin-dot" r="8"/></a>
+<a class="map-pin" href="#talk-03" aria-label="Bad Honnef, Germany · 1 presentation" transform="translate(516.777,92.261)"><title>Bad Honnef, Germany · 1 presentation</title><circle class="pin-hit" r="14"/><circle class="pin-focus" r="12"/><circle class="pin-dot" r="8"/></a>
+<a class="map-pin" href="#talk-04" aria-label="Natal, Brazil · 2 presentations" transform="translate(406.505,265.829)"><title>Natal, Brazil · 2 presentations</title><circle class="pin-hit" r="14"/><circle class="pin-focus" r="12"/><circle class="pin-dot" r="8"/></a>
+<a class="map-pin" href="#talk-06" aria-label="Daejeon, South Korea · 2 presentations" transform="translate(817.161,135.673)"><title>Daejeon, South Korea · 2 presentations</title><circle class="pin-hit" r="14"/><circle class="pin-focus" r="12"/><circle class="pin-dot" r="8"/></a>
+<a class="map-pin" href="#talk-07" aria-label="Warsaw, Poland · 1 presentation" transform="translate(548.299,87.570)"><title>Warsaw, Poland · 1 presentation</title><circle class="pin-hit" r="14"/><circle class="pin-focus" r="12"/><circle class="pin-dot" r="8"/></a>
+<a class="map-pin" href="#talk-08" aria-label="Edinburgh, United Kingdom · 1 presentation" transform="translate(492.850,76.715)"><title>Edinburgh, United Kingdom · 1 presentation</title><circle class="pin-hit" r="14"/><circle class="pin-focus" r="12"/><circle class="pin-dot" r="8"/></a>
+<a class="map-pin" href="#talk-09" aria-label="Jyväskylä, Finland · 2 presentations" transform="translate(555.104,58.957)"><title>Jyväskylä, Finland · 2 presentations</title><circle class="pin-hit" r="14"/><circle class="pin-focus" r="12"/><circle class="pin-dot" r="8"/></a>
+<a class="map-pin" href="#talk-11" aria-label="Puerto de la Cruz, Tenerife, Spain · 1 presentation" transform="translate(457.691,160.302)"><title>Puerto de la Cruz, Tenerife, Spain · 1 presentation</title><circle class="pin-hit" r="14"/><circle class="pin-focus" r="12"/><circle class="pin-dot" r="8"/></a>
+<a class="map-pin" href="#talk-12" aria-label="Mehedeby, Sweden · 1 presentation" transform="translate(537.772,63.948)"><title>Mehedeby, Sweden · 1 presentation</title><circle class="pin-hit" r="14"/><circle class="pin-focus" r="12"/><circle class="pin-dot" r="8"/></a>
+<a class="map-pin" href="#talk-13" aria-label="Kongens Lyngby (DTU), Denmark · 2 presentations" transform="translate(528.116,77.198)"><title>Kongens Lyngby (DTU), Denmark · 2 presentations</title><circle class="pin-hit" r="14"/><circle class="pin-focus" r="12"/><circle class="pin-dot" r="8"/></a>
+<a class="map-pin" href="#talk-15" aria-label="Castelldefels (ICFO), Spain · 1 presentation" transform="translate(504.852,120.579)"><title>Castelldefels (ICFO), Spain · 1 presentation</title><circle class="pin-hit" r="14"/><circle class="pin-focus" r="12"/><circle class="pin-dot" r="8"/></a>
+<a class="map-pin" href="#talk-17" aria-label="Cargèse, Corsica, France · 1 presentation" transform="translate(520.882,117.946)"><title>Cargèse, Corsica, France · 1 presentation</title><circle class="pin-hit" r="14"/><circle class="pin-focus" r="12"/><circle class="pin-dot" r="8"/></a></g>
+        </svg>
+        <div class="map-tooltip" id="talk-map-tooltip" aria-hidden="true" hidden></div>
+      </div>
+      <div class="map-caption">
+        <div class="map-legend" aria-label="Map legend">
+          <span><i class="legend-dot" aria-hidden="true"></i>Presentation locations</span>
+        </div>
+      </div>
+      <p class="map-help">Select a point to explore its presentations. Shared locations include all presentations; ICE 6 has no physical venue and is available in the location list.</p>
+      <div class="map-picker" data-map-controls hidden>
+        <label for="talk-map-place">Explore a location</label>
+        <select id="talk-map-place"><option value="">Choose a location…</option></select>
+      </div>
+      <div class="map-details" id="talk-map-details" aria-labelledby="talk-map-place-title" hidden>
+        <button class="map-details-close" id="talk-map-close" type="button" aria-label="Close location details">Close</button>
+        <h3 id="talk-map-place-title"></h3>
+        <ul id="talk-map-talks"></ul>
+      </div>
+      <p class="map-sr-only" id="talk-map-status" role="status" aria-live="polite" aria-atomic="true"></p>
+      <noscript><p class="map-help">Markers link to the first presentation at each location. Enable JavaScript to switch between World and Europe and explore every presentation at a location. All presentations are listed below.</p></noscript>
+    </section>
+
+    <section class="talk-section">
+      <h2 class="section-title">Conference presentations and seminars</h2>
+      <div class="talk-list">
+        <article class="talk" id="talk-01" tabindex="-1" data-location="ottawa" data-online="true">
+          <div class="talk-header">
+            <h3>Randomness and deterministic correlations with some communication restrictions</h3>
+            <span class="date">2026</span>
+          </div>
+          <p>QUASAR Seminar (Ottawa University), Ottawa, Canada. (Online)</p>
+          <div class="talk-links"><span class="talk-type">Talk</span></div>
+        </article>
+        <article class="talk" id="talk-02" tabindex="-1" data-location="sevilla">
+          <div class="talk-header">
+            <h3>The role of entanglement in energy-restricted communication and randomness generation</h3>
+            <span class="date">2026</span>
+          </div>
+          <p>Bienal de Física, Sevilla, Spain</p>
+          <div class="talk-links"><span class="talk-type">Talk</span></div>
+        </article>
+        <article class="talk" id="talk-03" tabindex="-1" data-location="bad-honnef">
+          <div class="talk-header">
+            <h3>Entanglement Structure Certification Based on Energy-Restricted State Discrimination</h3>
+            <span class="date">2026</span>
+          </div>
+          <p>WE-Heraeus-Seminar: 90 Years of EPR Paradox: Foundations and Applications, Bad Honnef, Germany.</p>
+          <div class="talk-links"><span class="talk-type">Poster presentation</span></div>
+        </article>
+        <article class="talk" id="talk-04" tabindex="-1" data-location="natal">
+          <div class="talk-header">
+            <h3>Quantum communication, randomness, and entanglement certification with photon-number constraints</h3>
+            <span class="date">2026</span>
+          </div>
+          <p>International Institute of Physics Seminar, Natal, Brazil.</p>
+          <div class="talk-links">
+            <span class="talk-type">Talk</span>
+            <a class="youtube-link" href="https://www.youtube.com/watch?v=UNz3k-5oNxw" target="_blank" rel="noopener noreferrer" aria-label="Watch this talk on YouTube">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12l-6.2 3.6Z"></path></svg>
+            </a>
+          </div>
+        </article>
+        <article class="talk" id="talk-05" tabindex="-1" data-location="natal">
+          <div class="talk-header">
+            <h3>The role of entanglement in energy-restricted communication and randomness generation</h3>
+            <span class="date">2026</span>
+          </div>
+          <p>Quantum at the Dunes, Natal, Brazil.</p>
+          <div class="talk-links">
+            <span class="talk-type">Talk</span>
+            <a class="youtube-link" href="https://www.youtube.com/watch?v=fxJz_cInHDw" target="_blank" rel="noopener noreferrer" aria-label="Watch this talk on YouTube">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.3 31.3 0 0 0 0 12a31.3 31.3 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 24 12a31.3 31.3 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12l-6.2 3.6Z"></path></svg>
+            </a>
+          </div>
+        </article>
+        <article class="talk" id="talk-06" tabindex="-1" data-location="daejeon">
+          <div class="talk-header"><h3>The role of entanglement in communication with energy restrictions</h3><span class="date">2025</span></div>
+          <p>KAIST Seminar, Daejeon, South Korea.</p>
+          <div class="talk-links"><span class="talk-type">Talk</span></div>
+        </article>
+        <article class="talk" id="talk-07" tabindex="-1" data-location="warsaw">
+          <div class="talk-header"><h3>Bound entangled states are more than useful in prepare-and-measure scenarios</h3><span class="date">2025</span></div>
+          <p>Quantum Certification Conference (QUACC), Warsaw, Poland.</p>
+          <div class="talk-links"><span class="talk-type">Talk</span></div>
+        </article>
+        <article class="talk" id="talk-08" tabindex="-1" data-location="edinburgh" data-online="true">
+          <div class="talk-header"><h3>Global restrictions under local state discrimination</h3><span class="date">2025</span></div>
+          <p>University of Edinburgh, Quantum Software Lab Seminar, Edinbrugh, United Kingdom. (Online)</p>
+          <div class="talk-links"><span class="talk-type">Talk</span></div>
+        </article>
+        <article class="talk" id="talk-09" tabindex="-1" data-location="jyvaskyla">
+          <div class="talk-header"><h3>Global restrictions under local state discrimination</h3><span class="date">2024</span></div>
+          <p>Faculty of Information Technology group meeting, Jyväskylä, Finland.</p>
+          <div class="talk-links"><span class="talk-type">Talk</span></div>
+        </article>
+        <article class="talk" id="talk-10" tabindex="-1" data-location="jyvaskyla">
+          <div class="talk-header"><h3>Quantum correlations and randomness certification with energy constraints</h3><span class="date">2024</span></div>
+          <p>JQUEST: JYU Quantum Electronics, Superconductivity, and Topology workshop, Jyväskylä, Finland.</p>
+          <div class="talk-links"><span class="talk-type">Talk</span></div>
+        </article>
+        <article class="talk" id="talk-11" tabindex="-1" data-location="tenerife">
+          <div class="talk-header"><h3>Prepare-and-measure scenarios with photon-number constraints</h3><span class="date">2024</span></div>
+          <p>ICE 9 (Quantum Information in Spain), Tenerife, Spain.</p>
+          <div class="talk-links"><span class="talk-type">Talk</span></div>
+        </article>
+        <article class="talk" id="talk-12" tabindex="-1" data-location="mehedeby">
+          <div class="talk-header"><h3>Correlations and randomness from photon-number restricted scenarios</h3><span class="date">2024</span></div>
+          <p>Quantum Redemptions, Mehedeleby, Sweden.</p>
+          <div class="talk-links"><span class="talk-type">Talk</span></div>
+        </article>
+        <article class="talk" id="talk-13" tabindex="-1" data-location="lyngby">
+          <div class="talk-header"><h3>Randomness certification from sequential measurements</h3><span class="date">2022</span></div>
+          <p>Workshop on Continuous-Variable Quantum Correlations, DTU, Denmark.</p>
+          <div class="talk-links"><span class="talk-type">Poster presentation</span></div>
+        </article>
+        <article class="talk" id="talk-14" tabindex="-1" data-location="daejeon">
+          <div class="talk-header"><h3>Semi-device-independent sequential randomness certification</h3><span class="date">2022</span></div>
+          <p>Quantum information seminar, KAIST, South Korea.</p>
+          <div class="talk-links"><span class="talk-type">Talk</span></div>
+        </article>
+        <article class="talk" id="talk-15" tabindex="-1" data-location="castelldefels">
+          <div class="talk-header"><h3>Contextual advantages in quantum state discrimination and randomness certification</h3><span class="date">2021</span></div>
+          <p>Joint seminar DTU-ICFO on Quantum Information, ICFO, Spain.</p>
+          <div class="talk-links"><span class="talk-type">Talk</span></div>
+        </article>
+        <article class="talk" id="talk-16" tabindex="-1" data-location="lyngby">
+          <div class="talk-header"><h3>Randomness certification in noncontextual models</h3><span class="date">2021</span></div>
+          <p>NONGAUSS winter school, DTU, Denmark.</p>
+          <div class="talk-links"><span class="talk-type">Talk</span></div>
+        </article>
+        <article class="talk" id="talk-17" tabindex="-1" data-location="cargese">
+          <div class="talk-header"><h3>Quantum vs. noncontextual semi-device-independent randomness certification</h3><span class="date">2021</span></div>
+          <p>Cargese School of Quantum Information and Quantum Technology, Sorbonne University, Italy.</p>
+          <div class="talk-links"><span class="talk-type">Poster presentation</span></div>
+        </article>
+        <article class="talk" id="talk-18" tabindex="-1" data-location="online" data-online="true">
+          <div class="talk-header"><h3>Quantum vs. noncontextual semi-device-independent randomness certification</h3><span class="date">2021</span></div>
+          <p>ICE 6 (Quantum Information in Spain), Online.</p>
+          <div class="talk-links"><span class="talk-type">Poster presentation</span></div>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer><p>© 2026 Carles Roch i Carceller. Hosted with GitHub Pages.</p></footer>
+  <!-- Map maintenance:
+       Add a data-location key to each new .talk article and its coordinates to places.
+       Use a unique id and tabindex="-1" on each article. For remote talks add data-online="true".
+       The map uses the articles as its source of truth; shared locations are grouped.
+       Land silhouettes are an embedded, simplified illustration, with no external map data.
+       Natural Earth I projection coefficients follow D3's naturalEarth1Raw.
+       D3 projection Copyright 2010-2025 Mike Bostock, ISC License:
+       Permission to use, copy, modify, and/or distribute this software for any purpose
+       with or without fee is hereby granted, provided that the above copyright notice
+       and this permission notice appear in all copies.
+       THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+       REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+       AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+       INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+       LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+       OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+       PERFORMANCE OF THIS SOFTWARE.
+  -->
+  <script>
+  (() => {
+    'use strict';
+    // Add data-location="..." to a .talk article, then add a new place here if needed.
+    // Titles, dates, venue text and links are read directly from the articles below.
+    // Coordinates are approximate city/campus locations, [longitude, latitude].
+    const places = {
+      ottawa: { name: 'Ottawa, Canada', coordinates: [-75.6972, 45.4215] },
+      sevilla: { name: 'Sevilla, Spain', coordinates: [-5.9845, 37.3891] },
+      'bad-honnef': { name: 'Bad Honnef, Germany', coordinates: [7.2278, 50.6434] },
+      natal: { name: 'Natal, Brazil', coordinates: [-35.2110, -5.7945] },
+      daejeon: { name: 'Daejeon, South Korea', coordinates: [127.363, 36.373] },
+      warsaw: { name: 'Warsaw, Poland', coordinates: [21.0122, 52.2297] },
+      edinburgh: { name: 'Edinburgh, United Kingdom', coordinates: [-3.1883, 55.9533] },
+      jyvaskyla: { name: 'Jyväskylä, Finland', coordinates: [25.7473, 62.2426] },
+      tenerife: { name: 'Puerto de la Cruz, Tenerife, Spain', coordinates: [-16.542, 28.418] },
+      mehedeby: { name: 'Mehedeby, Sweden', coordinates: [17.40324, 60.44691] },
+      lyngby: { name: 'Kongens Lyngby (DTU), Denmark', coordinates: [12.522, 55.786] },
+      castelldefels: { name: 'Castelldefels (ICFO), Spain', coordinates: [1.989, 41.276] },
+      // The Cargèse school took place in Corsica, France; the original entry says Italy.
+      cargese: { name: 'Cargèse, Corsica, France', coordinates: [8.595, 42.136] },
+      online: { name: 'Online · no physical venue', coordinates: null }
+    };
+    const svg = document.getElementById('talk-map-svg');
+    const markers = document.getElementById('talk-map-markers');
+    const picker = document.getElementById('talk-map-place');
+    const details = document.getElementById('talk-map-details');
+    const detailsTitle = document.getElementById('talk-map-place-title');
+    const detailsList = document.getElementById('talk-map-talks');
+    const tooltip = document.getElementById('talk-map-tooltip');
+    const status = document.getElementById('talk-map-status');
+    const groups = new Map();
+    let selected = '';
+    let previousTrigger = null;
+    const ns = 'http://www.w3.org/2000/svg';
+    const views = { world: [0, 0, 1000, 450], europe: [385, 40, 280, 126] };
+    // Uses exactly the same projection and transform as the embedded land paths.
+    function project([longitude, latitude]) {
+      const lambda = longitude * Math.PI / 180;
+      const phi = latitude * Math.PI / 180;
+      const phi2 = phi * phi, phi4 = phi2 * phi2;
+      const x = lambda * (0.8707 - 0.131979 * phi2 + phi4 * (-0.013791 + phi4 * (0.003971 * phi2 - 0.001529 * phi4)));
+      const y = phi * (1.007226 + phi2 * (0.015085 + phi4 * (-0.044475 + 0.028874 * phi2 - 0.005916 * phi4)));
+      return [500 + 175 * x, 248 - 175 * y];
+    }
+
+    document.querySelectorAll('.talk').forEach(article => {
+      const key = article.dataset.location;
+      if (!places[key]) return;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(article);
+    });
+    function showPlace(key, trigger) {
+      selected = key;
+      previousTrigger = trigger || picker;
+      picker.value = key;
+      markers.querySelectorAll('.map-pin').forEach(pin => pin.setAttribute('aria-expanded', String(pin.dataset.place === key)));
+      details.hidden = !key;
+      tooltip.hidden = true;
+      if (!key) { status.textContent = ''; return; }
+      const selectedPin = markers.querySelector('[data-place="' + key + '"]');
+      if (selectedPin && selectedPin.style.display === 'none') setView('world');
+      const articles = groups.get(key);
+      detailsTitle.textContent = places[key].name;
+      detailsList.replaceChildren();
+      articles.forEach(article => {
+        const item = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = '#' + article.id;
+        link.textContent = article.querySelector('.date').textContent.trim() + ' · ' + article.querySelector('h3').textContent.trim();
+        // Make same-page navigation move keyboard focus as well as scroll.
+        link.addEventListener('click', () => article.focus({ preventScroll: true }));
+        const venue = document.createElement('small');
+        venue.textContent = article.querySelector('p').textContent.trim();
+        item.append(link, venue);
+        detailsList.append(item);
+      });
+      status.textContent = detailsTitle.textContent + ': ' + articles.length + (articles.length === 1 ? ' presentation. Details below the map.' : ' presentations. Details below the map.');
+    }
+    function showTooltip(pin, label) {
+      const viewport = svg.parentElement.getBoundingClientRect();
+      const dot = pin.querySelector('.pin-dot').getBoundingClientRect();
+      tooltip.textContent = label;
+      tooltip.hidden = false;
+      const half = tooltip.offsetWidth / 2;
+      tooltip.style.left = Math.max(half, Math.min(viewport.width - half, dot.left + dot.width / 2 - viewport.left)) + 'px';
+      tooltip.style.top = (dot.top - viewport.top - 10) + 'px';
+    }
+    let mapped = 0;
+    markers.replaceChildren();
+    groups.forEach((articles, key) => {
+      const place = places[key];
+      const suffix = articles.length === 1 ? 'presentation' : 'presentations';
+      const label = place.name + ' · ' + articles.length + ' ' + suffix;
+      picker.add(new Option(label, key));
+      if (!place.coordinates) return;
+      mapped += articles.length;
+      const [x, y] = project(place.coordinates);
+      const pin = document.createElementNS(ns, 'g');
+      pin.classList.add('map-pin');
+      pin.setAttribute('transform', `translate(${x},${y})`);
+      pin.setAttribute('role', 'button');
+      pin.setAttribute('tabindex', '0');
+      pin.setAttribute('aria-label', label);
+      pin.setAttribute('aria-controls', details.id);
+      pin.setAttribute('aria-expanded', 'false');
+      pin.dataset.place = key;
+      [['pin-hit', 14], ['pin-focus', 12], ['pin-dot', 8]].forEach(([name, radius]) => {
+        const circle = document.createElementNS(ns, 'circle');
+        circle.setAttribute('class', name);
+        circle.setAttribute('r', radius);
+        circle.dataset.radius = radius;
+        pin.append(circle);
+      });
+      pin.addEventListener('click', () => showPlace(key, pin));
+      pin.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault(); showPlace(key, pin);
+        }
+      });
+      pin.addEventListener('pointerenter', event => { if (event.pointerType !== 'touch') showTooltip(pin, label); });
+      pin.addEventListener('pointerleave', () => { tooltip.hidden = true; });
+      pin.addEventListener('focus', () => showTooltip(pin, label));
+      pin.addEventListener('blur', () => { tooltip.hidden = true; });
+      markers.append(pin);
+    });
+    document.getElementById('talk-map-summary').textContent = mapped + ' presentations · ' + [...groups.keys()].filter(key => places[key].coordinates).length + ' locations';
+    picker.addEventListener('change', () => showPlace(picker.value, picker));
+    function closeDetails() {
+      const trigger = previousTrigger;
+      showPlace('', trigger);
+      if (trigger && trigger.style.display !== 'none') trigger.focus();
+      else picker.focus();
+      tooltip.hidden = true;
+    }
+    document.getElementById('talk-map-close').addEventListener('click', closeDetails);
+    document.getElementById('talk-map').addEventListener('keydown', event => {
+      if (event.key === 'Escape') { tooltip.hidden = true; if (selected) closeDetails(); }
+    });
+    function setView(name) {
+        const view = views[name];
+        svg.setAttribute('viewBox', view.join(' '));
+        tooltip.hidden = true;
+        // Preserve marker size while magnifying the Europe view.
+        const scale = view[2] / views.world[2];
+        markers.querySelectorAll('circle').forEach(circle => circle.setAttribute('r', circle.dataset.radius * scale));
+        markers.querySelectorAll('.map-pin').forEach(pin => {
+          const [x, y] = project(places[pin.dataset.place].coordinates);
+          const visible = x >= view[0] && x <= view[0] + view[2] && y >= view[1] && y <= view[1] + view[3];
+          pin.style.display = visible ? '' : 'none';
+        });
+        document.querySelectorAll('[data-map-view]').forEach(control => control.setAttribute('aria-pressed', String(control.dataset.mapView === name)));
+    }
+    document.querySelectorAll('[data-map-view]').forEach(button => {
+      button.addEventListener('click', () => setView(button.dataset.mapView));
+    });
+    document.querySelectorAll('[data-map-controls]').forEach(control => { control.hidden = false; });
+  })();
+
+  </script>
+</body>
+</html>
